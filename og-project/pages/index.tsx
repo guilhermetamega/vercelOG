@@ -1,7 +1,13 @@
 export default function Home() {
   return (
     <>
-      <h1>Gui</h1>
+      <head>
+  <title>Hello world</title>
+  <meta
+    property="og:image"
+    content="https://vercel-og-eight.vercel.app/api/og"
+  />
+</head>
     </>
   );
 }

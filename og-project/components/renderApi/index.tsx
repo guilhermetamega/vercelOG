@@ -3,7 +3,7 @@ import { NextRequest } from "next/server";
 import { sortAndDeduplicateDiagnostics } from "typescript";
 
 export const config = {
-  runtime: "experimental-edge",
+  runtime: "edge",
 };
 
 export default function handler(req: NextRequest) {
@@ -18,9 +18,9 @@ export default function handler(req: NextRequest) {
     const BgColor = hasBgColor ? searchParams.get("BgColor") : "lightblue";
     const Color = hasColor ? searchParams.get("Color") : "black";
 
-    return new ImageResponse((
-        <div style={{backgroundColor:`${BgColor}`}}></div>
-    ))
+    return new ImageResponse(
+      <div style={{ backgroundColor: `${BgColor}` }}></div>
+    );
   } catch (e: any) {
     console.log(`${e.message}`);
     return new Response(`Failed to generate the image`, { status: 500 });
