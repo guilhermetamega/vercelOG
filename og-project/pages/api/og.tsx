@@ -1,6 +1,5 @@
 import { ImageResponse } from "@vercel/og";
 import { NextRequest } from "next/server";
-import { sortAndDeduplicateDiagnostics } from "typescript";
 
 export const config = {
   runtime: "edge",
@@ -23,7 +22,6 @@ export default function handler(req: NextRequest) {
         <div
           style={{
             backgroundColor: `${BgColor}`,
-            backgroundSize: "150px 150px",
             height: "100%",
             width: "100%",
             display: "flex",
@@ -39,7 +37,7 @@ export default function handler(req: NextRequest) {
               fontSize: 60,
               fontStyle: "normal",
               letterSpacing: "-0.025em",
-              color: `${Color}`,
+              color: `#${Color}`,
               marginTop: 30,
               padding: "0 120px",
             }}
