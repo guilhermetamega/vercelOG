@@ -3,23 +3,25 @@ import { Head } from "next/document";
 import { useState, useEffect } from "react";
 
 export default function Home() {
-  const [text, setText] = useState("");
-  const [color, setColor] = useState("");
-  const [backgroundColor, setBackgroundColor] = useState("");
+  const [text, setText] = useState("ST.I");
+  const [color, setColor] = useState("#000000");
+  const [backgroundColor, setBackgroundColor] = useState("#ffffff");
   const [imageUri, setImageUri] = useState("");
 
-  useEffect(() => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
     const url = `http://localhost:3000/api/image?text=${encodeURIComponent(
       text
     )}&color=${encodeURIComponent(color)}&backgroundColor=${encodeURIComponent(
       backgroundColor
     )}`;
     setImageUri(url);
-  }, [text, color, backgroundColor]);
+  };
 
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           name="text"
@@ -38,6 +40,7 @@ export default function Home() {
           value={backgroundColor}
           onChange={(e) => setBackgroundColor(e.target.value)}
         />
+        <button type="submit">Submit</button>
       </form>
       <img src={imageUri} />
     </>

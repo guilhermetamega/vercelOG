@@ -7,7 +7,7 @@ export const config = {
 
 export default function handler(req: NextRequest) {
   const { searchParams } = new URL(req.url);
-  const text = searchParams.get("text") || "Lorem Ipsum";
+  const text = searchParams.get("text") || "";
   const backgroundColor = searchParams.get("backgroundColor") || "lightblue";
   const color = searchParams.get("color") || "black";
   return new ImageResponse(
@@ -15,26 +15,27 @@ export default function handler(req: NextRequest) {
       <div
         style={{
           backgroundColor,
-          height: "100%",
-          width: "100%",
+          height: 600,
+          width: 900,
           display: "flex",
           textAlign: "right",
           alignItems: "flex-end",
           justifyContent: "flex-end",
           flexDirection: "column",
           flexWrap: "nowrap",
-          padding: "60px",
+          padding: 40,
         }}
       >
-        <p
+        <span
           style={{
-            fontSize: 180,
+            fontSize: 100,
             textTransform: "uppercase",
             color,
+            fontWeight: 700,
           }}
         >
           {text}
-        </p>
+        </span>
       </div>
     )
   );
