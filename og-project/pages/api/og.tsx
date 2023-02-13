@@ -19,7 +19,35 @@ export default function handler(req: NextRequest) {
     const Color = hasColor ? searchParams.get("Color") : "black";
 
     return new ImageResponse(
-      <div style={{ backgroundColor: `${BgColor}` }}></div>
+      (
+        <div
+          style={{
+            backgroundColor: `${BgColor}`,
+            backgroundSize: "150px 150px",
+            height: "100%",
+            width: "100%",
+            display: "flex",
+            textAlign: "center",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+            flexWrap: "nowrap",
+          }}
+        >
+          <div
+            style={{
+              fontSize: 60,
+              fontStyle: "normal",
+              letterSpacing: "-0.025em",
+              color: `${Color}`,
+              marginTop: 30,
+              padding: "0 120px",
+            }}
+          >
+            {title}
+          </div>
+        </div>
+      )
     );
   } catch (e: any) {
     console.log(`${e.message}`);
