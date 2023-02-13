@@ -4,12 +4,7 @@ import { Head } from "next/document";
 export default function Home() {
   return (
     <>
-      <Head>
-        <meta
-          property="og:image"
-          content="https://vercel-og-eight.vercel.app/api/og"
-        />
-      </Head>
+      <h1>Test</h1>
     </>
   );
 }
