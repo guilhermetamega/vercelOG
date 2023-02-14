@@ -65,8 +65,8 @@ export default function Home() {
           Submit
         </button>
       </form>
-      {imageUris.map((imageUri) => {
-        return <img src={imageUri} />;
+      {imageUris.map((imageUri, i) => {
+        return <img src={imageUri} key={i} />;
       })}
     </div>
   );
