@@ -1,6 +1,4 @@
-// eslint-disable-next-line @next/next/no-document-import-in-page
-import { Head } from "next/document";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function Home() {
   const [text, setText] = useState("ST.I");
