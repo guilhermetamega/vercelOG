@@ -66,6 +66,7 @@ export default function Home() {
         </button>
       </form>
       {imageUris.map((imageUri, i) => {
+        // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
         return <img src={imageUri} key={i} />;
       })}
     </div>
