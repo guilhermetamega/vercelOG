@@ -53,7 +53,7 @@ export default async function handler(req: NextRequest) {
       fonts: [
         {
           name: "Inter",
-          data: await interData,
+          data: interData,
           style: "normal",
         },
       ],
