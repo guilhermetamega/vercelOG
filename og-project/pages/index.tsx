@@ -17,14 +17,19 @@ export default function Home() {
     setImageUri(url);
   };
 
+  const handleThemeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const theme = themes.find((theme) => theme[0] === e.target.value);
+    setColor(theme![1]);
+    setBackgroundColor(theme![2]);
+  };
   const themes = [
-    ["#000000", "#ffffff"],
-    ["#ffffff", "#000000"],
-    ["#ff0000", "#000000"],
-    ["#00ff00", "#000000"],
-    ["#0000ff", "#000000"],
-    ["#ffff00", "#000000"],
-    ["#00ffff", "#000000"],
+    ["Orange", "#AD6D56", "#e2d0ca"],
+    ["name2", "#ffffff", "#000000"],
+    ["name3", "#ff0000", "#000000"],
+    ["name4", "#00ff00", "#000000"],
+    ["name5", "#0000ff", "#000000"],
+    ["name6", "#ffff00", "#000000"],
+    ["name7", "#00ffff", "#000000"],
   ];
 
   return (
@@ -36,18 +41,14 @@ export default function Home() {
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <input
-          type="text"
-          name="color"
-          value={color}
-          onChange={(e) => setColor(e.target.value)}
-        />
-        <input
-          type="text"
-          name="backgroundColor"
-          value={backgroundColor}
-          onChange={(e) => setBackgroundColor(e.target.value)}
-        />
+        <select name="theme" id="theme" onChange={handleThemeChange}>
+          {themes.map((theme) => (
+            <option key={theme[0]} value={theme[0]}>
+              {theme[0]}
+            </option>
+          ))}
+        </select>
+
         <button type="submit">Submit</button>
       </form>
       <img src={imageUri} />
