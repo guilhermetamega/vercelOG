@@ -29,15 +29,39 @@ export default function Home() {
   ];
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        flexWrap: "nowrap",
+      }}
+    >
+      <form onSubmit={handleSubmit} style={{ margin: 50, display: "flex" }}>
         <input
           type="text"
           name="text"
           value={text}
           onChange={(e) => setText(e.target.value)}
+          style={{
+            height: 30,
+            borderRadius: "2rem",
+            borderStyle: "none",
+            textAlign: "center",
+          }}
         />
-        <select name="theme" id="theme" onChange={handleThemeChange}>
+        <select
+          name="theme"
+          id="theme"
+          onChange={handleThemeChange}
+          style={{
+            height: 30,
+            borderRadius: "2rem",
+            borderStyle: "none",
+            textAlign: "center",
+          }}
+        >
           {themes.map((theme) => (
             <option key={theme[0]} value={theme[0]}>
               {theme[0]}
@@ -45,9 +69,19 @@ export default function Home() {
           ))}
         </select>
 
-        <button type="submit">Submit</button>
+        <button
+          type="submit"
+          style={{
+            height: 30,
+            width: 50,
+            borderRadius: "2rem",
+            borderStyle: "none",
+          }}
+        >
+          Submit
+        </button>
       </form>
       <img src={imageUri} />
-    </>
+    </div>
   );
 }
