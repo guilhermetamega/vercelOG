@@ -24,12 +24,8 @@ export default function Home() {
   };
   const themes = [
     ["Orange", "#AD6D56", "#e2d0ca"],
-    ["name2", "#ffffff", "#000000"],
-    ["name3", "#ff0000", "#000000"],
-    ["name4", "#00ff00", "#000000"],
-    ["name5", "#0000ff", "#000000"],
-    ["name6", "#ffff00", "#000000"],
-    ["name7", "#00ffff", "#000000"],
+    ["Yellow", "#BFA85E", "#F2EDDA"],
+    ["Blue", "#668FC2", "#DDE8F6"],
   ];
 
   return (
