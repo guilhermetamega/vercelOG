@@ -2,26 +2,21 @@ import { useState } from "react";
 
 export default function Home() {
   const [text, setText] = useState("Text");
-  const [color, setColor] = useState("#000000");
-  const [backgroundColor, setBackgroundColor] = useState("#ffffff");
-  const [imageUri, setImageUri] = useState("");
+  const [imageUris, setImageUris] = useState<string[]>([]);
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
+    const urls = themes.map(([_, color, backgroundColor]) => {
+      return `/api/image?text=${encodeURIComponent(
+        text
+      )}&color=${encodeURIComponent(
+        color
+      )}&backgroundColor=${encodeURIComponent(backgroundColor)}`;
+    });
 
-    const url = `/api/image?text=${encodeURIComponent(
-      text
-    )}&color=${encodeURIComponent(color)}&backgroundColor=${encodeURIComponent(
-      backgroundColor
-    )}`;
-    setImageUri(url);
+    setImageUris(urls);
   };
 
-  const handleThemeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const theme = themes.find((theme) => theme[0] === e.target.value);
-    setColor(theme![1]);
-    setBackgroundColor(theme![2]);
-  };
   const themes = [
     ["Azul", "#4D84C4", "#C1D6EB"],
     ["Azul Escuro", "#3C537C", "#8FA7CC"],
@@ -57,23 +52,6 @@ export default function Home() {
             textAlign: "center",
           }}
         />
-        <select
-          name="theme"
-          id="theme"
-          onChange={handleThemeChange}
-          style={{
-            height: 30,
-            borderRadius: "2rem",
-            borderStyle: "none",
-            textAlign: "center",
-          }}
-        >
-          {themes.map((theme) => (
-            <option key={theme[0]} value={theme[0]}>
-              {theme[0]}
-            </option>
-          ))}
-        </select>
 
         <button
           type="submit"
@@ -87,7 +65,9 @@ export default function Home() {
           Submit
         </button>
       </form>
-      <img src={imageUri} />
+      {imageUris.map((imageUri) => {
+        return <img src={imageUri} />;
+      })}
     </div>
   );
 }
