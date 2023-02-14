@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function Home() {
-  const [text, setText] = useState("ST.I");
+  const [text, setText] = useState("Text");
   const [color, setColor] = useState("#000000");
   const [backgroundColor, setBackgroundColor] = useState("#ffffff");
   const [imageUri, setImageUri] = useState("");
@@ -9,7 +9,7 @@ export default function Home() {
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
 
-    const url = `http://localhost:3000/api/image?text=${encodeURIComponent(
+    const url = `/api/image?text=${encodeURIComponent(
       text
     )}&color=${encodeURIComponent(color)}&backgroundColor=${encodeURIComponent(
       backgroundColor
@@ -23,9 +23,15 @@ export default function Home() {
     setBackgroundColor(theme![2]);
   };
   const themes = [
-    ["Orange", "#AD6D56", "#e2d0ca"],
-    ["Yellow", "#BFA85E", "#F2EDDA"],
-    ["Blue", "#668FC2", "#DDE8F6"],
+    ["Azul", "#4D84C4", "#C1D6EB"],
+    ["Azul Escuro", "#3C537C", "#8FA7CC"],
+    ["Azul Claro", "#62A7DE", "#EEF5FB"],
+    ["Verde", "#9FBF38", "#D4E3A0"],
+    ["Verde Escuro", "#647733", "#ABC270"],
+    ["Verde Claro", "#BFD05D", "#F9FBEF"],
+    ["Cinza", "#807F7D", "#CDCDCB"],
+    ["Cinza Escuro", "#585856", "#868683"],
+    ["Cinza Claro", "#C4C4C4", "#F5F5F5"],
   ];
 
   return (
