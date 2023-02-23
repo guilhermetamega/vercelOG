@@ -2,6 +2,7 @@
 import ButtonSubmit from "@/components/ButtonSubmit";
 import ColorRadio from "@/components/ColorRadio";
 import ColorsContainer from "@/components/ColorsContainer";
+import ColorViewer from "@/components/ColorViewer";
 import Container from "@/components/Container";
 import Form from "@/components/Form";
 import Input from "@/components/Input";
@@ -68,6 +69,13 @@ export default function Home() {
             />
           ))}
         </ColorsContainer>
+
+        <ColorViewer text="Cor do Texto" colorHex={color} bgColor={color} />
+        <ColorViewer
+          text="Cor do Fundo"
+          colorHex={backgroundColor}
+          bgColor={backgroundColor}
+        />
 
         <ButtonSubmit type="submit">Preview</ButtonSubmit>
       </Form>

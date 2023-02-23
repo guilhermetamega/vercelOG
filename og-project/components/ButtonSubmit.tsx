@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const ButtonSubmit = styled.button`
+  margin-top: 20px;
   padding: 10px;
   border-radius: 0.5rem;
   border-style: none;
