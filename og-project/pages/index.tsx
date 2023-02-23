@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import ButtonSubmit from "@/components/ButtonSubmit";
 import ColorRadio from "@/components/ColorRadio";
+import ColorsContainer from "@/components/ColorsContainer";
 import Container from "@/components/Container";
 import Form from "@/components/Form";
 import Input from "@/components/Input";
@@ -56,15 +57,17 @@ export default function Home() {
           onChange={(e) => setText(e.target.value)}
         />
 
-        {themes.map(([_, __, bgColor]) => (
-          <ColorRadio
-            type="radio"
-            checked={checked === bgColor}
-            onChange={() => handleClick(bgColor)}
-            color={bgColor}
-            key={bgColor}
-          />
-        ))}
+        <ColorsContainer>
+          {themes.map(([_, __, bgColor]) => (
+            <ColorRadio
+              type="radio"
+              checked={checked === bgColor}
+              onChange={() => handleClick(bgColor)}
+              color={bgColor}
+              key={bgColor}
+            />
+          ))}
+        </ColorsContainer>
 
         <ButtonSubmit type="submit">Preview</ButtonSubmit>
       </Form>
