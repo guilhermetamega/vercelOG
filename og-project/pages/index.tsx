@@ -1,6 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 import ButtonSubmit from "@/components/ButtonSubmit";
 import ColorRadio from "@/components/ColorRadio";
 import Container from "@/components/Container";
+import Form from "@/components/Form";
 import Input from "@/components/Input";
 import { SetStateAction, useEffect, useState } from "react";
 
@@ -46,7 +48,7 @@ export default function Home() {
 
   return (
     <Container>
-      <form onSubmit={handleSubmit} style={{ margin: 50, display: "flex" }}>
+      <Form onSubmit={handleSubmit}>
         <Input
           type="text"
           name="text"
@@ -65,8 +67,11 @@ export default function Home() {
         ))}
 
         <ButtonSubmit type="submit">Preview</ButtonSubmit>
-      </form>
-      <img src={imageUri} />
+      </Form>
+      <img
+        src={imageUri}
+        alt={imageUri == "" ? "" : "Imagem gerada pelo seletor"}
+      />
     </Container>
   );
 }
