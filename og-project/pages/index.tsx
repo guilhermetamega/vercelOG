@@ -1,8 +1,13 @@
+import ButtonSubmit from "@/components/ButtonSubmit";
+import ColorRadio from "@/components/ColorRadio";
+import Container from "@/components/Container";
+import Input from "@/components/Input";
 import { useState } from "react";
 
 export default function Home() {
   const [text, setText] = useState("Text");
   const [imageUris, setImageUris] = useState<string[]>([]);
+  const [check, setCheck] = useState(false);
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -30,45 +35,28 @@ export default function Home() {
   ];
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-        flexWrap: "nowrap",
-      }}
-    >
+    <Container>
       <form onSubmit={handleSubmit} style={{ margin: 50, display: "flex" }}>
-        <input
+        <Input
           type="text"
           name="text"
           value={text}
           onChange={(e) => setText(e.target.value)}
-          style={{
-            height: 30,
-            borderRadius: "2rem",
-            borderStyle: "none",
-            textAlign: "center",
-          }}
         />
 
-        <button
-          type="submit"
-          style={{
-            height: 30,
-            width: 50,
-            borderRadius: "2rem",
-            borderStyle: "none",
-          }}
-        >
-          Submit
-        </button>
+        <ColorRadio
+          type="radio"
+          checked={check}
+          onClick={() => setCheck(!check)}
+          color="red"
+        />
+
+        <ButtonSubmit type="submit">Preview</ButtonSubmit>
       </form>
       {imageUris.map((imageUri, i) => {
         // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
         return <img src={imageUri} key={i} />;
       })}
-    </div>
+    </Container>
   );
 }
