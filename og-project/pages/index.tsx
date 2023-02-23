@@ -9,15 +9,15 @@ import Input from "@/components/Input";
 import { SetStateAction, useEffect, useState } from "react";
 
 const themes = [
-  ["Azul", "#4D84C4", "#C1D6EB"],
-  ["Azul Escuro", "#3C537C", "#8FA7CC"],
-  ["Azul Claro", "#62A7DE", "#EEF5FB"],
-  ["Verde", "#9FBF38", "#D4E3A0"],
-  ["Verde Escuro", "#647733", "#ABC270"],
-  ["Verde Claro", "#BFD05D", "#F9FBEF"],
-  ["Cinza", "#807F7D", "#CDCDCB"],
-  ["Cinza Escuro", "#585856", "#868683"],
-  ["Cinza Claro", "#C4C4C4", "#F5F5F5"],
+  ["#4D84C4", "#C1D6EB"],
+  ["#3C537C", "#8FA7CC"],
+  ["#62A7DE", "#EEF5FB"],
+  ["#9FBF38", "#D4E3A0"],
+  ["#647733", "#ABC270"],
+  ["#BFD05D", "#F9FBEF"],
+  ["#807F7D", "#CDCDCB"],
+  ["#585856", "#868683"],
+  ["#C4C4C4", "#F5F5F5"],
 ];
 
 export default function Home() {
@@ -39,7 +39,7 @@ export default function Home() {
   };
 
   function handleChange(selectedColor: string) {
-    themes.map(([_, color, bgColor]) => {
+    themes.map(([color, bgColor]) => {
       if (selectedColor === bgColor) {
         setColor(color);
         setBackgroundColor(bgColor);
@@ -59,7 +59,7 @@ export default function Home() {
         />
 
         <ColorsContainer>
-          {themes.map(([_, __, bgColor]) => (
+          {themes.map(([_, bgColor]) => (
             <ColorRadio
               type="radio"
               checked={checked === bgColor}
