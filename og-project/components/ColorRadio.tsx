@@ -10,9 +10,12 @@ const ColorRadio = styled.input`
   border: none;
   margin: 3px;
 
-  &:checked {
+  :checked {
     outline: 2px solid #333;
     border: 3px solid red;
+  }
+  :hover {
+    cursor: pointer;
   }
 `;
 

@@ -22,8 +22,8 @@ const themes = [
 export default function Home() {
   const [text, setText] = useState("Text");
   const [imageUri, setImageUri] = useState("");
-  const [color, setColor] = useState("#000000");
-  const [backgroundColor, setBackgroundColor] = useState("#ffffff");
+  const [color, setColor] = useState(themes[4][1]);
+  const [backgroundColor, setBackgroundColor] = useState(themes[4][2]);
   const [checked, setChecked] = useState("#F5F5F5");
 
   const handleSubmit = (e: React.SyntheticEvent) => {
@@ -37,7 +37,7 @@ export default function Home() {
     setImageUri(url);
   };
 
-  function handleClick(selectedColor: string) {
+  function handleChange(selectedColor: string) {
     themes.map(([_, color, bgColor]) => {
       if (selectedColor === bgColor) {
         setColor(color);
@@ -62,7 +62,7 @@ export default function Home() {
             <ColorRadio
               type="radio"
               checked={checked === bgColor}
-              onChange={() => handleClick(bgColor)}
+              onChange={() => handleChange(bgColor)}
               color={bgColor}
               key={bgColor}
             />
