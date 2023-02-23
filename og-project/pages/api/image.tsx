@@ -40,7 +40,7 @@ export default async function handler(req: NextRequest) {
             textTransform: "uppercase",
             color,
             lineHeight: 1,
-            marginBottom: -15,
+            marginBottom: 10,
           }}
         >
           {text}
