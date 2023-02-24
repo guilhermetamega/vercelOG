@@ -6,6 +6,7 @@ const ColorViewerContainer = styled.div`
   justify-content: center;
   align-content: center;
   font-family: var(--font-mono);
+  margin: 0px -20px;
 `;
 
 const Label = styled.label`
@@ -27,6 +28,7 @@ export default function ColorViewer(props: any) {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 0.5rem;
   `;
 
   return (

@@ -25,8 +25,8 @@ const themes = [
 export default function Home() {
   const [text, setText] = useState("Text");
   const [imageUri, setImageUri] = useState("");
-  const [color, setColor] = useState(themes[4][1]);
-  const [backgroundColor, setBackgroundColor] = useState(themes[4][2]);
+  const [color, setColor] = useState(themes[4][0]);
+  const [backgroundColor, setBackgroundColor] = useState(themes[4][1]);
   const [checked, setChecked] = useState("#F5F5F5");
 
   const handleSubmit = (e: React.SyntheticEvent) => {

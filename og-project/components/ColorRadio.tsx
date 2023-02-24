@@ -7,7 +7,7 @@ const ColorRadio = styled.input`
   width: 50px;
   height: 50px;
   outline: none;
-  border: none;
+  border-radius: 0.5rem;
   margin: 3px;
 
   :checked {
