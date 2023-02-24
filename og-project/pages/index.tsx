@@ -4,6 +4,7 @@ import ColorRadio from "@/components/ColorRadio";
 import ColorsContainer from "@/components/ColorsContainer";
 import ColorViewer from "@/components/ColorViewer";
 import Container from "@/components/Container";
+import DownloadButton from "@/components/DownloadButton";
 import Form from "@/components/Form";
 import Input from "@/components/Input";
 import { SetStateAction, useEffect, useState } from "react";
@@ -83,6 +84,9 @@ export default function Home() {
         src={imageUri}
         alt={imageUri == "" ? "" : "Imagem gerada pelo seletor"}
       />
+      <DownloadButton href={imageUri} download={`${text}-${color}`}>
+        Download
+      </DownloadButton>
     </Container>
   );
 }
