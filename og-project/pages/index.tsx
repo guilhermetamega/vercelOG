@@ -11,6 +11,7 @@ import ImageContainer from "@/components/ImageContainer";
 import Input from "@/components/Input";
 import Image from "next/image";
 import { useState } from "react";
+import SizeRadio from "@/components/SizeRadio";
 
 const themes = [
   ["#4D84C4", "#C1D6EB"],
@@ -64,10 +65,6 @@ export default function Home() {
     }
   }
 
-  function loader() {
-    return imageUri;
-  }
-
   function handleChange(selectedColor: string) {
     themes.map(([color, bgColor]) => {
       if (selectedColor === bgColor) {
@@ -76,6 +73,10 @@ export default function Home() {
       }
     });
     setChecked(selectedColor);
+  }
+
+  function loader() {
+    return imageUri;
   }
 
   return (
@@ -98,6 +99,12 @@ export default function Home() {
               key={bgColor}
             />
           ))}
+        </OptionsContainer>
+
+        <OptionsContainer>
+          <SizeRadio text="teste" />
+          <SizeRadio text="teste" />
+          <SizeRadio text="teste" />
         </OptionsContainer>
 
         <ColorViewer text="Cor do Texto">
