@@ -6,6 +6,7 @@ import ColorViewer from "@/components/ColorViewer";
 import Container from "@/components/Container";
 import DownloadButton from "@/components/DownloadButton";
 import Form from "@/components/Form";
+import ImageContainer from "@/components/ImageContainer";
 import Input from "@/components/Input";
 import { SetStateAction, useEffect, useState } from "react";
 
@@ -80,13 +81,15 @@ export default function Home() {
 
         <ButtonSubmit type="submit">Preview</ButtonSubmit>
       </Form>
-      <img
-        src={imageUri}
-        alt={imageUri == "" ? "" : "Imagem gerada pelo seletor"}
-      />
-      <DownloadButton href={imageUri} download={`${text}-${color}`}>
-        Download
-      </DownloadButton>
+      <ImageContainer>
+        <img
+          src={imageUri}
+          alt={imageUri == "" ? "" : "Imagem gerada pelo seletor"}
+        />
+        <DownloadButton href={imageUri} download={`${text}-${color}`}>
+          Download
+        </DownloadButton>
+      </ImageContainer>
     </Container>
   );
 }
