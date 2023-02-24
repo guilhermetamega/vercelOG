@@ -6,10 +6,14 @@ const Container = styled.div`
   align-items: center;
   flex-direction: row;
   flex-wrap: nowrap;
-  scale: 0.8;
 
   @media only screen and (max-width: 1350px) {
     flex-direction: column;
+    scale: 0.5;
+  }
+
+  @media only screen and (min-width: 1350px) {
+    scale: 0.8;
   }
 `;
 
