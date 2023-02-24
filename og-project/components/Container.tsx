@@ -10,7 +10,6 @@ const Container = styled.div`
   @media only screen and (max-width: 1350px) {
     flex-direction: column;
     scale: 0.4;
-    margin-top: -450px;
   }
 
   @media only screen and (min-width: 1350px) {
