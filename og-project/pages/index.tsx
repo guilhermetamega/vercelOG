@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import ButtonSubmit from "@/components/ButtonSubmit";
+import ColorInput from "@/components/ColorInput";
 import ColorRadio from "@/components/ColorRadio";
 import ColorsContainer from "@/components/ColorsContainer";
 import ColorViewer from "@/components/ColorViewer";
@@ -8,7 +9,8 @@ import DownloadButton from "@/components/DownloadButton";
 import Form from "@/components/Form";
 import ImageContainer from "@/components/ImageContainer";
 import Input from "@/components/Input";
-import { SetStateAction, useEffect, useState } from "react";
+import Image from "next/image";
+import { useState } from "react";
 
 const themes = [
   ["#4D84C4", "#C1D6EB"],
@@ -34,11 +36,15 @@ export default function Home() {
     const url = `/api/image?text=${encodeURIComponent(
       text
     )}&color=${encodeURIComponent(color)}&backgroundColor=${encodeURIComponent(
-      backgroundColor
+      backgroundColor.toUpperCase()
     )}`;
 
     setImageUri(url);
   };
+
+  function loader() {
+    return imageUri;
+  }
 
   function handleChange(selectedColor: string) {
     themes.map(([color, bgColor]) => {
@@ -72,19 +78,29 @@ export default function Home() {
           ))}
         </ColorsContainer>
 
-        <ColorViewer text="Cor do Texto" colorHex={color} bgColor={color} />
-        <ColorViewer
-          text="Cor do Fundo"
-          colorHex={backgroundColor}
-          bgColor={backgroundColor}
-        />
+        <ColorViewer text="Cor do Texto">
+          <ColorInput
+            value={color}
+            onChange={(e) => setColor(e.target.value)}
+          />
+        </ColorViewer>
+        <ColorViewer text="Cor do Fundo">
+          <ColorInput
+            value={backgroundColor}
+            onChange={(e) => setBackgroundColor(e.target.value)}
+          />
+        </ColorViewer>
 
         <ButtonSubmit type="submit">Preview</ButtonSubmit>
       </Form>
+
       <ImageContainer>
-        <img
+        <Image
+          loader={loader}
           src={imageUri}
           alt={imageUri == "" ? "" : "Imagem gerada pelo seletor"}
+          width={900}
+          height={600}
         />
         <DownloadButton href={imageUri} download={`${text}-${color}`}>
           Download

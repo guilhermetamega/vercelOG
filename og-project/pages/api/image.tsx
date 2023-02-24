@@ -14,6 +14,8 @@ export default async function handler(req: NextRequest) {
 
   const { searchParams } = new URL(req.url);
   const text = searchParams.get("text") || "";
+  const width = searchParams.get("width") || 900;
+  const height = searchParams.get("heigth") || 600;
   const backgroundColor = searchParams.get("backgroundColor") || "lightblue";
   const color = searchParams.get("color") || "black";
   return new ImageResponse(
