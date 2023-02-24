@@ -12,7 +12,7 @@ const ColorRadio = styled.input`
 
   :checked {
     outline: 2px solid #333;
-    border: 3px solid red;
+    border: 2px solid red;
   }
   :hover {
     cursor: pointer;

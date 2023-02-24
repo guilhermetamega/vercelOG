@@ -5,14 +5,14 @@ const Radio = styled.input`
   appearance: none;
   background: ${(props) => props.color};
   outline: none;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   margin: 3px;
   width: 30px;
   height: 30px;
 
   :checked {
-    outline: 10px solid #333;
-    border: 3px solid red;
+    outline: 0px solid #333;
+    border: 2px solid red;
   }
   :hover {
     cursor: pointer;
@@ -32,7 +32,13 @@ const Span = styled.span`
 export default function SizeRadio(props: any) {
   return (
     <Container>
-      <Radio type="radio" />
+      <Radio
+        type="radio"
+        value={props.value}
+        onChange={props.onChange}
+        checked={props.checked}
+        color={props.color}
+      />
       <Span>{props.text}</Span>
     </Container>
   );

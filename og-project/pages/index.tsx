@@ -26,9 +26,9 @@ const themes = [
 ];
 
 const sizes = [
-  [900, 600],
-  [1080, 720],
-  [1920, 1080],
+  ["Small", 900, 600],
+  ["Medium", 1080, 720],
+  ["Big", 1920, 1080],
 ];
 
 export default function Home() {
@@ -36,9 +36,10 @@ export default function Home() {
   const [imageUri, setImageUri] = useState("");
   const [color, setColor] = useState(themes[4][0]);
   const [backgroundColor, setBackgroundColor] = useState(themes[4][1]);
-  const [checked, setChecked] = useState("#F5F5F5");
+  const [checkedColor, setCheckedColor] = useState("#F5F5F5");
   const [width, setWidth] = useState(sizes[0][0]);
   const [height, setHeight] = useState(sizes[0][1]);
+  const [checkedSize, setCheckedSize] = useState("P");
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -72,7 +73,17 @@ export default function Home() {
         setBackgroundColor(bgColor);
       }
     });
-    setChecked(selectedColor);
+    setCheckedColor(selectedColor);
+  }
+
+  function handleChangeSize(selectedSize: any) {
+    sizes.map(([text, w, h]) => {
+      if (selectedSize === text) {
+        setWidth(w);
+        setHeight(h);
+      }
+    });
+    setCheckedSize(selectedSize);
   }
 
   function loader() {
@@ -93,7 +104,7 @@ export default function Home() {
           {themes.map(([_, bgColor]) => (
             <ColorRadio
               type="radio"
-              checked={checked === bgColor}
+              checked={checkedColor === bgColor}
               onChange={() => handleChange(bgColor)}
               color={bgColor}
               key={bgColor}
@@ -102,9 +113,15 @@ export default function Home() {
         </OptionsContainer>
 
         <OptionsContainer>
-          <SizeRadio text="teste" />
-          <SizeRadio text="teste" />
-          <SizeRadio text="teste" />
+          {sizes.map(([text]) => (
+            <SizeRadio
+              checked={checkedSize === text}
+              onChange={() => handleChangeSize(text)}
+              text={text}
+              color={"#d9d9d9"}
+              key={text}
+            />
+          ))}
         </OptionsContainer>
 
         <ColorViewer text="Cor do Texto">
@@ -128,7 +145,7 @@ export default function Home() {
           width={900}
           height={600}
         />
-        <DownloadButton href={imageUri} download={`${text}-${color}`}>
+        <DownloadButton href={imageUri} download={`${text}-${color}-${width}`}>
           Download
         </DownloadButton>
       </ImageContainer>
