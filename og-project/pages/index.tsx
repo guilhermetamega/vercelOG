@@ -24,6 +24,12 @@ const themes = [
   ["#C4C4C4", "#F5F5F5"],
 ];
 
+const sizes = [
+  [900, 600],
+  [1080, 720],
+  [1920, 1080],
+];
+
 export default function Home() {
   const [text, setText] = useState("Text");
   const [imageUri, setImageUri] = useState("");
@@ -37,7 +43,9 @@ export default function Home() {
       text
     )}&color=${encodeURIComponent(
       color.toUpperCase()
-    )}&backgroundColor=${encodeURIComponent(backgroundColor.toUpperCase())}`;
+    )}&backgroundColor=${encodeURIComponent(
+      backgroundColor.toUpperCase()
+    )}&width=1200&height=800`;
 
     setImageUri(url);
   };

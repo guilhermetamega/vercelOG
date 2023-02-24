@@ -14,8 +14,8 @@ export default async function handler(req: NextRequest) {
 
   const { searchParams } = new URL(req.url);
   const text = searchParams.get("text") || "";
-  const width = searchParams.get("width") || 900;
-  const height = searchParams.get("heigth") || 600;
+  const width = searchParams.get("width");
+  const height = searchParams.get("height");
   const backgroundColor = searchParams.get("backgroundColor") || "lightblue";
   const color = searchParams.get("color") || "black";
   return new ImageResponse(
@@ -23,8 +23,8 @@ export default async function handler(req: NextRequest) {
       <div
         style={{
           backgroundColor,
-          height: 600,
-          width: 900,
+          height: height ? parseInt(height) : 600,
+          width: width ? parseInt(width) : 900,
           display: "flex",
           textAlign: "right",
           alignItems: "flex-end",
@@ -50,8 +50,8 @@ export default async function handler(req: NextRequest) {
       </div>
     ),
     {
-      height: 600,
-      width: 900,
+      height: height ? parseInt(height) : 600,
+      width: width ? parseInt(width) : 900,
       fonts: [
         {
           name: "Inter",
