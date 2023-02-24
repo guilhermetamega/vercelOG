@@ -124,10 +124,10 @@ export default function Home() {
           ))}
         </OptionsContainer>
 
-        <ColorViewer text="Cor do Texto">
+        <ColorViewer text="Text Color">
           <ColorInput value={color} onChange={handleChangeColorInput} />
         </ColorViewer>
-        <ColorViewer text="Cor do Fundo">
+        <ColorViewer text="Background Color">
           <ColorInput
             value={backgroundColor}
             onChange={handleChangeBgColorInput}
