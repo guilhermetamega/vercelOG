@@ -2,7 +2,7 @@
 import ButtonSubmit from "@/components/ButtonSubmit";
 import ColorInput from "@/components/ColorInput";
 import ColorRadio from "@/components/ColorRadio";
-import ColorsContainer from "@/components/ColorsContainer";
+import OptionsContainer from "@/components/OptionsContainer";
 import ColorViewer from "@/components/ColorViewer";
 import Container from "@/components/Container";
 import DownloadButton from "@/components/DownloadButton";
@@ -36,6 +36,8 @@ export default function Home() {
   const [color, setColor] = useState(themes[4][0]);
   const [backgroundColor, setBackgroundColor] = useState(themes[4][1]);
   const [checked, setChecked] = useState("#F5F5F5");
+  const [width, setWidth] = useState(sizes[0][0]);
+  const [height, setHeight] = useState(sizes[0][1]);
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -45,7 +47,7 @@ export default function Home() {
       color.toUpperCase()
     )}&backgroundColor=${encodeURIComponent(
       backgroundColor.toUpperCase()
-    )}&width=1200&height=800`;
+    )}&width=${width}&height=${height}`;
 
     setImageUri(url);
   };
@@ -86,7 +88,7 @@ export default function Home() {
           onChange={(e) => setText(e.target.value)}
         />
 
-        <ColorsContainer>
+        <OptionsContainer>
           {themes.map(([_, bgColor]) => (
             <ColorRadio
               type="radio"
@@ -96,7 +98,7 @@ export default function Home() {
               key={bgColor}
             />
           ))}
-        </ColorsContainer>
+        </OptionsContainer>
 
         <ColorViewer text="Cor do Texto">
           <ColorInput value={color} onChange={handleChangeColorInput} />

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ColorsContainer = styled.div`
+const OptionsContainer = styled.div`
   display: flex;
   justify-content: center;
   margin: 40px;
@@ -9,4 +9,4 @@ const ColorsContainer = styled.div`
   background-color: #3b3b3b;
 `;
 
-export default ColorsContainer;
+export default OptionsContainer;
