@@ -9,7 +9,7 @@ const Container = styled.div`
 
   @media only screen and (max-width: 1350px) {
     flex-direction: column;
-    scale: 0.5;
+    scale: 0.3;
   }
 
   @media only screen and (min-width: 1350px) {
