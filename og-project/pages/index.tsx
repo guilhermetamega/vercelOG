@@ -35,12 +35,24 @@ export default function Home() {
     e.preventDefault();
     const url = `/api/image?text=${encodeURIComponent(
       text
-    )}&color=${encodeURIComponent(color)}&backgroundColor=${encodeURIComponent(
-      backgroundColor.toUpperCase()
-    )}`;
+    )}&color=${encodeURIComponent(
+      color.toUpperCase()
+    )}&backgroundColor=${encodeURIComponent(backgroundColor.toUpperCase())}`;
 
     setImageUri(url);
   };
+
+  function handleChangeColorInput(e: any) {
+    if (e.target.value.startsWith("#")) {
+      setColor(e.target.value);
+    }
+  }
+
+  function handleChangeBgColorInput(e: any) {
+    if (e.target.value.startsWith("#")) {
+      setBackgroundColor(e.target.value);
+    }
+  }
 
   function loader() {
     return imageUri;
@@ -79,15 +91,12 @@ export default function Home() {
         </ColorsContainer>
 
         <ColorViewer text="Cor do Texto">
-          <ColorInput
-            value={color}
-            onChange={(e) => setColor(e.target.value)}
-          />
+          <ColorInput value={color} onChange={handleChangeColorInput} />
         </ColorViewer>
         <ColorViewer text="Cor do Fundo">
           <ColorInput
             value={backgroundColor}
-            onChange={(e) => setBackgroundColor(e.target.value)}
+            onChange={handleChangeBgColorInput}
           />
         </ColorViewer>
 
