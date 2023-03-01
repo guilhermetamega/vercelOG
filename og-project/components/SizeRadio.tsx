@@ -12,7 +12,7 @@ const Radio = styled.input`
 
   :checked {
     outline: 0px solid #333;
-    border: 2px solid red;
+    background-color: red;
   }
   :hover {
     cursor: pointer;

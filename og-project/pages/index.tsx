@@ -36,10 +36,10 @@ export default function Home() {
   const [imageUri, setImageUri] = useState("");
   const [color, setColor] = useState(themes[4][0]);
   const [backgroundColor, setBackgroundColor] = useState(themes[4][1]);
-  const [checkedColor, setCheckedColor] = useState("#F5F5F5");
+  const [checkedColor, setCheckedColor] = useState("#ABC270");
   const [width, setWidth] = useState(sizes[0][1]);
   const [height, setHeight] = useState(sizes[0][2]);
-  const [checkedSize, setCheckedSize] = useState("P");
+  const [checkedSize, setCheckedSize] = useState("Small");
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -137,18 +137,25 @@ export default function Home() {
         <ButtonSubmit type="submit">Preview</ButtonSubmit>
       </Form>
 
-      <ImageContainer>
-        <Image
-          loader={loader}
-          src={imageUri}
-          alt={imageUri == "" ? "" : "Imagem gerada pelo seletor"}
-          width={900}
-          height={600}
-        />
-        <DownloadButton href={imageUri} download={`${text}-${color}-${width}`}>
-          Download
-        </DownloadButton>
-      </ImageContainer>
+      {imageUri ? (
+        <ImageContainer>
+          <Image
+            loader={loader}
+            src={imageUri}
+            alt={imageUri == "" ? "" : "Imagem gerada pelo seletor"}
+            width={900}
+            height={600}
+          />
+          <DownloadButton
+            href={imageUri}
+            download={`${text}-${color}-${width}`}
+          >
+            Download
+          </DownloadButton>
+        </ImageContainer>
+      ) : (
+        ""
+      )}
     </Container>
   );
 }
