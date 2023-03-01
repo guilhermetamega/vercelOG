@@ -37,8 +37,8 @@ export default function Home() {
   const [color, setColor] = useState(themes[4][0]);
   const [backgroundColor, setBackgroundColor] = useState(themes[4][1]);
   const [checkedColor, setCheckedColor] = useState("#F5F5F5");
-  const [width, setWidth] = useState(sizes[0][0]);
-  const [height, setHeight] = useState(sizes[0][1]);
+  const [width, setWidth] = useState(sizes[0][1]);
+  const [height, setHeight] = useState(sizes[0][2]);
   const [checkedSize, setCheckedSize] = useState("P");
 
   const handleSubmit = (e: React.SyntheticEvent) => {
